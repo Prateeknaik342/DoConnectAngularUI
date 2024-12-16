@@ -1,0 +1,60 @@
+<p id="mainp">{{heading}}</p>
+    
+
+<div class="register-container">
+    <form action="#" [formGroup]="form" (ngSubmit)="addUser()" class="register-form">
+        <h2>Create Account</h2>
+        <div class="input-group">
+            <label for="username">User ID</label>
+            <input type="text" id="UserId" placeholder="Enter your username" formControlName="UserId" />
+        </div>
+        <div *ngIf="formControls['UserId'].touched && formControls['UserId'].invalid">
+            <small *ngIf="formControls['UserId'].hasError('required')">UserID is required.</small>
+            <small *ngIf="formControls['UserId'].hasError('minlength')">UserId must be at least 5 characters long.</small>
+          </div>
+
+        <div class="input-group">
+            <label for="username">Username</label>
+            <input type="text" id="UserName" placeholder="Enter your username" formControlName="UserName" >
+        </div>
+        <div *ngIf="formControls['UserName'].touched && formControls['UserName'].invalid">
+            <small *ngIf="formControls['UserName'].hasError('required')">UserName is required.</small>
+            <small *ngIf="formControls['UserName'].hasError('minlength')">UserName must be at least 5 characters long.</small>
+          </div>
+
+        <div class="input-group">
+            <label for="password">Password</label>
+            <input type="password" id="Password" formControlName="Password" placeholder="Enter your password" required>
+        </div>
+        <div *ngIf="formControls['Password'].touched && formControls['Password'].invalid">
+            <small *ngIf="formControls['Password'].hasError('required')">Password is required.</small>
+            <small *ngIf="formControls['Password'].hasError('pattern')">Password must be atleast 8 character long.</small>
+        </div>
+
+
+        <div class="input-group">
+            <label for="email">Email</label>
+            <input type="email" id="Email" formControlName="Email" placeholder="Enter your email" required>
+        </div>
+        <div *ngIf="formControls['Email'].touched && formControls['Email'].invalid">
+            <small *ngIf="formControls['Email'].hasError('required')">Email is required.</small>
+            <small *ngIf="formControls['Email'].hasError('email')">Email must consit @.</small>
+          </div>
+
+        
+        <div class="input-group">
+            <label for="confirm-password">Phone Number</label>
+            <input type="number" id="PhoneNo" formControlName="PhoneNo" placeholder="Confirm your password" >
+        </div>
+        <div *ngIf="formControls['PhoneNo'].touched && formControls['PhoneNo'].invalid">
+            <small *ngIf="formControls['PhoneNo'].hasError('required')">PhoneNo is required.</small>
+            <small *ngIf="formControls['PhoneNo'].hasError('pattern')">PhoneNo must consit 10 digits.</small>
+          </div>
+
+        <!-- <button type="submit" class="register-btn" (click)="addUser()" >Register</button> -->
+        <button type="submit" [disabled]="form.invalid">Register</button>
+
+        
+    </form>
+    <p>Already have an account? <a href="/login">Login here</a></p>
+</div>
